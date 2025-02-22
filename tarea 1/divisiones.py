@@ -1,6 +1,6 @@
 def dividir(a, b)->float:
     if b == 0:
-        return "Error: división por cero"
+        return "Error"
     cociente = 0
     while a >= b:
         a = a-b
@@ -12,4 +12,4 @@ a = int(input())
 print("Ingresa el divisor: ")
 b = int(input())
 
-print("El cociente es:",round(dividir(a,b),3))
+print("El resultado es:",round(dividir(a,b),3))
