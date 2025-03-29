@@ -35,7 +35,7 @@ def valido(i:int, j:int):
     return 0 <= i < len(tablero) and 0 <= j < len(tablero[0]) 
 
 def buscar_con_pila(tablero, start_i, start_j):
-    # Realiza una búsqueda de la salida utilizando una pila (búsqueda en profundidad - DFS)
+    # Realiza una búsqueda de la salida utilizando una pila (búsqueda en profundidad)
     
     stack = [(start_i, start_j)]  # Inicializa la pila con la posición de inicio
 
