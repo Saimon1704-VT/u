@@ -14,11 +14,9 @@ def add_queue(ticket: Ticket, ticketTypes: dict) -> dict:
     }
 
     if ticket.type not in opciones:
-        print(f"Error: Tipo de atención inválido '{ticket.type}'")  # Esto aparecerá en consola
         return {"error": "Tipo de atención inválido"}  # Esto se verá en Postman
 
-    if ticket.type not in ticketTypes:
-        print(f"Error: No existe una cola para el tipo de ticket '{ticket.type}'")  
+    if ticket.type not in ticketTypes:  
         return {"error": f"No existe una cola para el tipo '{ticket.type}'"}
 
     ticketTypes[ticket.type].enqueue(ticket)
