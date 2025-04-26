@@ -9,7 +9,8 @@ class TicketController:
     def is_empty(self) -> bool:
         # Verificamos si la cola está vacía.
         return self.head is None
-    
+
+   #-------------------------------------------------------------------------------------------- 
     def enqueue(self, ticket: Ticket) -> None:
         # Si la prioridad del ticket no está definida, la establecemos en True si la edad es >= 60.
         if ticket.priority_attention is None:
@@ -37,7 +38,7 @@ class TicketController:
         
         # Imprimimos el mensaje de confirmación.
         print(f"Turno {ticket.name} agregado con prioridad {ticket.priority_attention}")
-      
+#--------------------------------------------------------------------------------------------
     def dequeue(self) -> Ticket:
         # Si la cola está vacía, retornamos None.
         if self.is_empty():
@@ -47,7 +48,8 @@ class TicketController:
             ticket = self.head.data
             self.head = self.head.next
             return ticket
-        
+#--------------------------------------------------------------------------------------------        
     def peek(self) -> Ticket:
         # Retornamos el primer ticket en la cola sin eliminarlo.
         return None if self.is_empty() else self.head.data
+#--------------------------------------------------------------------------------------------

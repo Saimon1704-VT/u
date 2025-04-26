@@ -14,6 +14,7 @@ ticketTypes = {
     "otros": TicketController()
 }
 
+#--------------------------------------------------------------------------------------------
 
 # Nuevo endpoint agregado para permitir la creación de múltiples tickets a la vez
 @app.post("/ticketCreateSome")
@@ -33,6 +34,7 @@ def crear_turnos_some(turnos: List[Ticket]):
         "errores": errores if errores else "Ningún error"
     }
 
+#--------------------------------------------------------------------------------------------
 
 # Endpoint para obtener el siguiente turno
 @app.get("/ticketNext")
@@ -62,7 +64,9 @@ def obtener_siguiente_turno(): # Eliminado parámetro 'tipo', ahora se seleccion
             "priority_attention": highest_priority_ticket.priority_attention
         }
     }
-    
+
+#--------------------------------------------------------------------------------------------
+
 # Endpoint para listar los turnos en cola por el tipo de turno
 @app.get("/ticketList")
 def listar_turnos_cola(): # Eliminado parámetro 'tipo' para listar todas las colas juntas
@@ -85,6 +89,8 @@ def listar_turnos_cola(): # Eliminado parámetro 'tipo' para listar todas las co
     queue.sort(key=lambda x: x["priority_attention"], reverse=True)
 
     return {"mensaje": "Lista de todos los turnos en cola ordenados por prioridad", "datos_turnos": queue if queue else "No hay turnos en cola"}
+
+#--------------------------------------------------------------------------------------------
 
 # Otros endpoints existentes
 @app.get("/")
