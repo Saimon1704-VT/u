@@ -1,8 +1,6 @@
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
-
-# Clase Noticia
 class Noticia:
     def __init__(self, texto: str, categoria: str):
         self.texto = texto
@@ -11,14 +9,11 @@ class Noticia:
     def __str__(self):
         return f"Categoría: {self.categoria}, Noticia: {self.texto}"
 
-# Nodo del árbol
 class Nodo:
     def __init__(self, noticia: Noticia, izq=None, der=None):
         self.noticia = noticia
         self.izq = None
         self.der = None
-
-# Árbol binario de búsqueda
 class ArbolBinario:
     def __init__(self, raiz=None) -> None:
         self.raiz = raiz
@@ -66,7 +61,6 @@ class ArbolBinario:
             self._inorden(nodo.der)
     
     def buscar_por_categoria(self, categoria_buscada):
-        """Encuentra todas las noticias de una categoría"""
         noticias = []
         self._buscar_categoria(self.raiz, categoria_buscada, noticias)
         return noticias
@@ -93,20 +87,16 @@ class Clasificador:
         confianza = max(self.modelo.predict_proba(X)[0]) * 100
         return categoria, confianza
 
-# Cargar datos
 noticias = pd.read_csv('proyecto final/noticias_clasificadas.csv')
 
-# Crear árbol
 arbol = ArbolBinario()
 for index, row in noticias.iterrows():
     noticia = Noticia(row['Noticia'], row['Categoría'])
     arbol.insertar(noticia)
 
-# Entrenar clasificador
 clasificador = Clasificador()
 clasificador.entrenar(noticias['Noticia'].tolist(), noticias['Categoría'].tolist())
 
-# Menú
 while True:
     print("\n--- MENÚ ---")
     print("1. Clasificar nueva noticia")
