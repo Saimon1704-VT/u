@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
 class Noticia:
-    def __init__(self, texto: str, categoria: str):
+    def __init__(self, texto: str, categoria: str): #__init__ constructor
         self.texto = texto
         self.categoria = categoria
 
