@@ -78,13 +78,13 @@ class Clasificador:
         self.modelo = MultinomialNB()
         
     def entrenar(self, textos, categorias):
-        X = self.vectorizer.fit_transform(textos)
+        X = self.vectorizer.fit_transform(textos) #aprender vocabulario
         self.modelo.fit(X, categorias)
         
     def predecir(self, texto):
         X = self.vectorizer.transform([texto])
         categoria = self.modelo.predict(X)[0]
-        confianza = max(self.modelo.predict_proba(X)[0]) * 100
+        confianza = max(self.modelo.predict_proba(X)[0]) * 100 #max optiene la probabilidad mas alta
         return categoria, confianza
 
 noticias = pd.read_csv('proyecto final/noticias_clasificadas.csv')
@@ -109,7 +109,7 @@ while True:
     
     if opcion == "1":
         texto = input("Ingresa la noticia: ")
-        if texto.strip():
+        if texto.strip(): #script elimina espacios
             categoria, confianza = clasificador.predecir(texto)
             print(f"Categoría: {categoria} (Confianza: {confianza:.1f}%)")
             
