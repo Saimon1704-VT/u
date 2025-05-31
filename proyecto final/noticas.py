@@ -102,7 +102,8 @@ while True:
     print("1. Clasificar nueva noticia")
     print("2. Buscar noticia exacta")
     print("3. Ver noticias por categoría")
-    print("4. Salir")
+    print("4. Ver todas las noticias ordenadas")  
+    print("5. Salir")
     
     opcion = input("Opción: ")
     
@@ -135,6 +136,10 @@ while True:
             print("No se encontraron noticias de esa categoría.")
     
     elif opcion == "4":
+        print("\n--- Noticias ordenadas ---")
+        arbol.inorden()  
+    
+    elif opcion == "5":
         print("Saliendo...")
         break
     
